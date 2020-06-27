@@ -44,9 +44,13 @@ public class AnalyticsService {
         updatedAnalyticsInfo.setSum(analyticsInfo.getSum().add(payment.getAmount()));
         if (payment.getAmount().compareTo(analyticsInfo.getMin()) < 0) {
             updatedAnalyticsInfo.setMin(payment.getAmount());
+        } else {
+            updatedAnalyticsInfo.setMin(analyticsInfo.getMin());
         }
         if (payment.getAmount().compareTo(analyticsInfo.getMax()) > 0) {
             updatedAnalyticsInfo.setMax(payment.getAmount());
+        } else {
+            updatedAnalyticsInfo.setMax(analyticsInfo.getMax());
         }
         return updatedAnalyticsInfo;
     }

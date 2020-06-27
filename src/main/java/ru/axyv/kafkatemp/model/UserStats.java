@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,10 +13,13 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserAnalytics {
-    private String userId;
-    private BigDecimal totalSum;
-    private final Map<String, AnalyticsInfo> analyticInfo = new HashMap<>();
+public class UserStats {
+
+    private Integer oftenCategoryId;
+    private Integer rareCategoryId;
+    private Integer maxAmountCategoryId;
+    private Integer minAmountCategoryId;
+
     @JsonIgnore
-    private final UserStats userStats = new UserStats();
+    private Map<String, Integer> categoriesCount = new HashMap<>();
 }
