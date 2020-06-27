@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import ru.axyv.kafkatemp.model.StatusResponse;
 import ru.axyv.kafkatemp.model.UserAnalytics;
+import ru.axyv.kafkatemp.model.UserStats;
 import ru.axyv.kafkatemp.service.AnalyticsService;
 
 @RestController
@@ -33,9 +34,9 @@ public class AnalyticsController {
 
     @GetMapping("/analytic/{userId}/stats")
     public ResponseEntity<?> userOftenAnalytics(@PathVariable String userId) {
-        UserAnalytics userAnalytics = analyticsService.getUserAnalytics(userId);
-        if (userAnalytics != null) {
-            return ResponseEntity.ok(userAnalytics);
+        UserStats stats = analyticsService.getUserStats(userId);
+        if (stats != null) {
+            return ResponseEntity.ok(stats);
         } else {
             return new ResponseEntity<>(new StatusResponse("user not found"), HttpStatus.NOT_FOUND);
         }

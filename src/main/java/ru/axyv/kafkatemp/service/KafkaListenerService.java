@@ -35,7 +35,7 @@ public class KafkaListenerService {
 //            ack.acknowledge();
 //    }
 
-    @KafkaListener(topics = "RAW_PAYMENTS", groupId = "group7")
+    @KafkaListener(topics = "RAW_PAYMENTS", groupId = "group8")
     public void listen(Payment payment, Acknowledgment ack) {
         log.debug("Reading payment: " + payment);
         if (payment != null)
